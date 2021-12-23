@@ -1,15 +1,9 @@
-CC := clang
-CXX := clang++
-
-CFLAGS += -Iminizip -I../libplist/include -I. -mno-sse
+CFLAGS += -Iminizip -I../libplist/include -I.
 CXXFLAGS := $(CFLAGS) -std=c++17
 
 src := $(wildcard *.cpp)
 src += minizip/ioapi.c minizip/zip.c minizip/unzip.c
 ldid_src += ldid/ldid.cpp ldid/lookup2.c
-
-#ldid/%.o : CC := gcc
-#ldid/%.o : CXX := g++
 
 %.c.o : %.c
 	$(CC) $(CFLAGS) $(EXTRA_FLAGS) -o $@ -c $<
